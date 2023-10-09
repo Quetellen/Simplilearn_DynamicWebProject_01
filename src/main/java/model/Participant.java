@@ -1,3 +1,4 @@
+package model;
 
 public class Participant {
 	private int id;

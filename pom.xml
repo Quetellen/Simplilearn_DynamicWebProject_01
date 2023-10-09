@@ -64,7 +64,7 @@
       </plugin>
     </plugins>
     
-    <finalName>ZumbaProject</finalName>
+    <finalName>DynamicWebProject_01</finalName>
   </build>
   
 </project>
