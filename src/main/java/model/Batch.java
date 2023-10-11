@@ -2,16 +2,36 @@ package model;
 import java.util.List;
 
 public class Batch {
-	private int id;
+	private int b_id;
     private String name;
-    private String startDate;
-    private String endDate;
-    private List<Participant> participants;
-	public int getId() {
-		return id;
+    private String startTime;
+    private String endTime;
+    private String shift;
+    
+    
+    Batch() {
+    	super();
+    	// TODO Auto-generated constructor stub
+    }
+    
+    
+    
+	Batch(int b_id, String name, String startTime, String endTime, String shift) {
+		super();
+		this.b_id = b_id;
+		this.name = name;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.shift = shift;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	
+	
+	public int getB_id() {
+		return b_id;
+	}
+	public void setB_id(int b_id) {
+		this.b_id = b_id;
 	}
 	public String getName() {
 		return name;
@@ -19,24 +39,26 @@ public class Batch {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getStartDate() {
-		return startDate;
+	public String getStartTime() {
+		return startTime;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
-	public String getEndDate() {
-		return endDate;
+	public String getEndTime() {
+		return endTime;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
-	public List<Participant> getParticipants() {
-		return participants;
+	public String getShift() {
+		return shift;
 	}
-	public void setParticipants(List<Participant> participants) {
-		this.participants = participants;
+	public void setShift(String shift) {
+		this.shift = shift;
 	}
+    
+    //private List<Participant> participants;
     
     
 
