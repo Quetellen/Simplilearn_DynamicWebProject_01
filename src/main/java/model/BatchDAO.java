@@ -2,21 +2,23 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /* Creating CRUD operations*/
 
-
 public class BatchDAO {
-	/*MODULO DE CONEXAO*/
-	//Parametros de conexao
+	/* MODULO DE CONEXAO */
+	// Parametros de conexao
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost:3306/zumba?useTimezone=true&serverTimezone=UTC";
 	private String user = "root";
 	private String password = "Astro78*llOvw67%";
-	
-	//Metodo de conexao
+
+	// Metodo de conexao
 	private Connection connect() {
-		Connection con=null;
+		Connection con = null;
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, user, password);
@@ -26,16 +28,66 @@ public class BatchDAO {
 			return null;
 		}
 	}
-	/*
-	//teste de conexao
-	public void connectionTest() {
+
+	/* CRUD CREATE */
+	public void insertNewBatch(Batch batch) {
+		String create = "INSERT INTO batch(name, startTime, endTime, shift) VALUES (?,?,?,?)";
 		try {
+			// abrir a conexao
 			Connection con = connect();
-			System.out.println(con);
+			// Preparar a query para a execucao no banco de dados
+			PreparedStatement pst = con.prepareStatement(create);
+			// substituir os parametos (?) pelo conteudo das variaveis
+			// int b_id = Integer.parseInt(batch.getB_id());
+			// pst.setInt(1,b_id);
+			pst.setString(1, batch.getName());
+			pst.setString(2, batch.getStartTime());
+			pst.setString(3, batch.getEndTime());
+			pst.setString(4, batch.getShift());
+			// Executar a Query
+			pst.executeUpdate();
+			// Encerrar conexao
+			con.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-	} */
-	
+	}
+
+	/*
+	 * CRUD READ
+	 */
+	public ArrayList<Batch> listbatches() {
+		// Criando um objeto para acessar a classe batch
+		ArrayList<Batch> batch = new ArrayList<>();
+		String read = "SELECT * FROM batch ORDER BY NAME";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(read);
+			ResultSet rs = pst.executeQuery();
+			// O laco sera executado enquanto houver contatos
+			while (rs.next()) {
+				// variaveis de apoio que receberm os dados do banco
+				String name = rs.getString(1);
+				String startTime = rs.getString(2);
+				String endTime = rs.getString(3);
+				String shift = rs.getString(4);
+				// populando o Array list
+				batch.add(new Batch(name, startTime, endTime, shift));
+
+			}
+			con.close();
+			return batch;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	/*
+	 * //teste de conexao public void connectionTest() { try { Connection con =
+	 * connect(); System.out.println(con); } catch (Exception e) {
+	 * System.out.println(e); } }
+	 */
 
 }

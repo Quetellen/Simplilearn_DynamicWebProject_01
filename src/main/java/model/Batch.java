@@ -1,5 +1,4 @@
 package model;
-import java.util.List;
 
 public class Batch {
 	private int b_id;
@@ -8,15 +7,14 @@ public class Batch {
     private String endTime;
     private String shift;
     
-    
-    Batch() {
+    public Batch() {
     	super();
-    	// TODO Auto-generated constructor stub
+    	
     }
     
     
     
-	Batch(int b_id, String name, String startTime, String endTime, String shift) {
+	public Batch(int b_id, String name, String startTime, String endTime, String shift) {
 		super();
 		this.b_id = b_id;
 		this.name = name;
@@ -57,6 +55,7 @@ public class Batch {
 	public void setShift(String shift) {
 		this.shift = shift;
 	}
+
     
     //private List<Participant> participants;
     
