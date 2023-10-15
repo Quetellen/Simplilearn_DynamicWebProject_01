@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,6 +46,7 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		//Criando um objeto que ira receber os dados Batches
 		ArrayList<Batch> list = batchDAO.listbatches();
+		/*
 		//teste de recebimento
 		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i).getB_id());
@@ -54,7 +55,7 @@ public class Controller extends HttpServlet {
 			System.out.println(list.get(i).getEndTime());
 			System.out.println(list.get(i).getShift());
 		}
-
+		*/
 		// test de conexao
 		// batchDAO.connectionTest();
 

@@ -1,5 +1,0 @@
-controller\Controller.class
-model\BatchDAO.class
-model\Batch.class
-model\Participant.class
-model\ParticipantDAO.class

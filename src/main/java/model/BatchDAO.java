@@ -67,12 +67,13 @@ public class BatchDAO {
 			// O laco sera executado enquanto houver contatos
 			while (rs.next()) {
 				// variaveis de apoio que receberm os dados do banco
-				String name = rs.getString(1);
-				String startTime = rs.getString(2);
-				String endTime = rs.getString(3);
-				String shift = rs.getString(4);
+				 int b_id = rs.getInt(1);
+				String name = rs.getString(2);
+				String startTime = rs.getString(3);
+				String endTime = rs.getString(4);
+				String shift = rs.getString(5);
 				// populando o Array list
-				batch.add(new Batch(name, startTime, endTime, shift));
+				batch.add(new Batch(b_id, name, startTime, endTime, shift));
 
 			}
 			con.close();

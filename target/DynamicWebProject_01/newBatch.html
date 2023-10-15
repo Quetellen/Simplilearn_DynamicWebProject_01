@@ -8,23 +8,23 @@
 </head>
 <body>
 	<h1>Create a New Batch</h1>
-	<form name=""frmBatch action="">
-		<tb>
+	<form name="frmBatch" action="insert">
+		<table>
 			<tr>
-				<td><input type="text" name="name" placeholder="Batch ID"></td>
+				<td><input type="text" name="name" placeholder="Batch Name" class="box2"></td>
 			</tr>
 			<tr>
-				<td><input type="time" name="startTime" placeholder="Start Time"></td>				
+				<td><input type="text" name="startTime" placeholder="Start Time" class="box1"></td>				
 			</tr>
 			<tr>
-				<td><input type="time" name="endTime" placeholder="End Time"></td>
+				<td><input type="text" name="endTime" placeholder="End Time" class="box1" ></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="shift" placeholder="Shift"></td>
+				<td><input type="text" name="shift" placeholder="AM/PM" class="box1"></td>
 			</tr>
-		</tb>
-		<input typt="button" value="Add">
+		</table>
+		<input type="button" value="Add" class="button" onclick="validate()">
 	</form>
-
+<script src="scripts/validate.js"></script>
 </body>
 </html>
