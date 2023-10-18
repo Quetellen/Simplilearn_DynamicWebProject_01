@@ -39,7 +39,7 @@ public class BatchDAO {
 			PreparedStatement pst = con.prepareStatement(create);
 			// substituir os parametos (?) pelo conteudo das variaveis
 			// int b_id = Integer.parseInt(batch.getB_id());
-			// pst.setInt(1,b_id);
+			// pst.setString(1, batch.getB_id());
 			pst.setString(1, batch.getName());
 			pst.setString(2, batch.getStartTime());
 			pst.setString(3, batch.getEndTime());
@@ -67,7 +67,7 @@ public class BatchDAO {
 			// O laco sera executado enquanto houver contatos
 			while (rs.next()) {
 				// variaveis de apoio que receberm os dados do banco
-				 int b_id = rs.getInt(1);
+				String b_id = rs.getString(1);
 				String name = rs.getString(2);
 				String startTime = rs.getString(3);
 				String endTime = rs.getString(4);
@@ -82,6 +82,51 @@ public class BatchDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
+		}
+	}
+
+	/*
+	 * CRUD UPDATE
+	 */
+	// Selecionar o contato
+
+	public void selectBatch(Batch batch) {
+		String read2 = "SELECT * FROM batch WHERE b_id = ?";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(read2);
+			pst.setString(1, batch.getB_id());
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				// setar as variaveis bacth
+				batch.setB_id(rs.getString(1));
+				batch.setName(rs.getString(2));
+				batch.setStartTime(rs.getString(3));
+				batch.setEndTime(rs.getString(4));
+				batch.setShift(rs.getString(5));
+			}
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+	// update batch
+	public void updateBatch(Batch batch) {
+		String create = "UPDATE batch SET name=?, startTime=?,endTime=?,shift=? WHERE b_id=?";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(create);
+			pst.setString(1, batch.getName());
+			pst.setString(2, batch.getStartTime());
+			pst.setString(3, batch.getEndTime());
+			pst.setString(4, batch.getShift());
+			pst.setString(5, batch.getB_id());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 

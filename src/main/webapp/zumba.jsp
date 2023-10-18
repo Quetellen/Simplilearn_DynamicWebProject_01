@@ -44,7 +44,7 @@ ArrayList<Batch> list = (ArrayList<Batch>) request.getAttribute("batch");
 				<td><%=list.get(i).getStartTime()%></td>
 				<td><%=list.get(i).getEndTime()%></td>
 				<td><%=list.get(i).getShift()%></td>
-				<td><a href="select?b_id=<%= list.get(i).getB_id()%>" class="button1"> Edit</a></td>
+				<td><a href="select?B_id=<%= list.get(i).getB_id()%>" class="button1"> Update </a></td>
 			</tr>
 			<%
 			}

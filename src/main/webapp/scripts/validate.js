@@ -8,7 +8,7 @@
 	 let startTime = frmBatch.startTime.value
 	 let endTime = frmBatch.endTime.value
 	 let shift = frmBatch.shift.value
-	 if (name === ""){
+	 if (name === "") {
 		 alert('Please, give a name to your Batch')
 		 frmBatch.name.focus()
 		 return false
