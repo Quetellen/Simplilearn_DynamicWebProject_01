@@ -129,6 +129,19 @@ public class BatchDAO {
 			System.out.println(e);
 		}
 	}
+	/*CRUD DELETE*/
+	public void deleteBatch(Batch batch) {
+		String delete = "DELETE FROM batch WHERE b_id=?";
+		try {
+			Connection con = connect();
+			PreparedStatement pst = con.prepareStatement(delete);
+			pst.setString(1, batch.getB_id());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 
 	/*
 	 * //teste de conexao public void connectionTest() { try { Connection con =

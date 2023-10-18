@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Batch;
 import model.BatchDAO;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update", "/delete" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -41,6 +41,8 @@ public class Controller extends HttpServlet {
 			listBatches(request, response);
 		} else if (action.equals("/update")) {
 			updateBatches(request, response);
+		} else if (action.equals("/delete")) {
+			removeBatches(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -119,28 +121,42 @@ public class Controller extends HttpServlet {
 
 		// value="<%out.print(request.getAttribute("b_id"));%>"
 	}
-	
 
 	protected void updateBatches(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		/*
-		//test de recebiment
-		System.out.println(request.getParameter("b_id"));
-		System.out.println(request.getParameter("name"));
-		System.out.println(request.getParameter("startTime"));
-		System.out.println(request.getParameter("endTime"));
-		System.out.println(request.getParameter("shift"));
-	*/
-		//setar as variaveis
+		 * //test de recebiment System.out.println(request.getParameter("b_id"));
+		 * System.out.println(request.getParameter("name"));
+		 * System.out.println(request.getParameter("startTime"));
+		 * System.out.println(request.getParameter("endTime"));
+		 * System.out.println(request.getParameter("shift"));
+		 */
+		// setar as variaveis
 		batch.setB_id(request.getParameter("b_id"));
 		batch.setName(request.getParameter("name"));
 		batch.setStartTime(request.getParameter("startTime"));
 		batch.setEndTime(request.getParameter("endTime"));
 		batch.setShift(request.getParameter("shift"));
-		//executar o metodo updateBatch
+		// executar o metodo updateBatch
 		batchDAO.updateBatch(batch);
-		//redirecionar para o documento zumba.jsp (atualizando as alteracoes)
+		// redirecionar para o documento zumba.jsp (atualizando as alteracoes)
 		response.sendRedirect("main");
-		
+
 	}
+
+	// Remove a batch
+	protected void removeBatches(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String b_id = request.getParameter("b_id");
+		// recebimento do id do batch a ser excluido
+		System.out.println(b_id);
+		// setar a variavel
+		batch.setB_id(b_id);
+		// executar o metodo deletar contato
+		batchDAO.deleteBatch(batch);
+		// redirecionar para o documento zumba.jsp (atualizando as alteracoes)
+		response.sendRedirect("main");
+
+	}
+
 }
