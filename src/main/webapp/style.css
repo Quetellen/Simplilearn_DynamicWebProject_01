@@ -35,6 +35,7 @@ h1 {
 	border: 0;
 	cursor: pointer;
 }
+
 .button2 {
 	text-decoration: none;
 	background-color: #d51213;
@@ -68,7 +69,8 @@ h1 {
 	border: 1px solid #ff8c00;
 	border-radius: 5px;
 }
-#box3{
+
+#box3 {
 	padding: 5px;
 	margin-bottom: 10px;
 	border: 1px solid #ff0000;

@@ -46,11 +46,11 @@ ArrayList<Batch> list = (ArrayList<Batch>) request.getAttribute("batch");
 				<td><%=list.get(i).getEndTime()%></td>
 				<td><%=list.get(i).getShift()%></td>
 				<td><a href="select?b_id=<%=list.get(i).getB_id()%>"
-					class="button1"> Update </a> 
-					<a href="javascript: confirm(<%=list.get(i).getB_id()%>)"
-					class="button2"> Delete </a>
-				</td>
-				<td><a href="" class="button1"> Participants </a></td>
+					class="button1"> Update </a> <a
+					href="javascript: confirming(<%=list.get(i).getB_id()%>)"
+					class="button2"> Delete </a></td>
+				<td><a href="zumbaParticipants.jsp" class="button1">
+						Participants </a></td>
 			</tr>
 			<%
 			}

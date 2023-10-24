@@ -129,7 +129,8 @@ public class BatchDAO {
 			System.out.println(e);
 		}
 	}
-	/*CRUD DELETE*/
+
+	/* CRUD DELETE */
 	public void deleteBatch(Batch batch) {
 		String delete = "DELETE FROM batch WHERE b_id=?";
 		try {

@@ -7,4 +7,23 @@
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>Controller2</servlet-name>
+		<servlet-class>controller.Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/Controller/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ControllerP</servlet-name>
+		<servlet-class>controller.Controller2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControllerP</servlet-name>
+		<url-pattern>/ControllerP/*</url-pattern>
+	</servlet-mapping>
 </web-app>
+
+<!-- com.simplilearn.course.DynamicWebProject-01 -->

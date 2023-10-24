@@ -20,8 +20,6 @@ public class Controller extends HttpServlet {
 	BatchDAO batchDAO = new BatchDAO();
 	Batch batch = new Batch();
 
-	// ParticipantDAO participantDAO = new ParticipantDAO();
-
 	public Controller() {
 		super();
 
